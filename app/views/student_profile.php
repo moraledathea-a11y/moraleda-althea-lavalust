@@ -3,184 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Althea's Student Profile</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Student Profile</title>
 
     <style>
-        body {
-            margin: 0;
-            font-family: 'Fredoka', 'Comic Sans MS', cursive, sans-serif;
-            background-color: #fff5f8;
-            background-image: 
-                radial-gradient(#ffccd5 2px, transparent 2px),
-                radial-gradient(#ffccd5 2px, #fff5f8 2px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            color: #5c4d5c;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 0;
+        * {
             box-sizing: border-box;
         }
 
-        .profile-card {
-            max-width: 650px;
-            width: 85%;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            padding: 45px;
-            border-radius: 35px;
-            border: 4px solid #ffb3c6;
-            box-shadow: 
-                0 15px 35px rgba(255, 182, 193, 0.3),
-                inset 0 0 15px rgba(255, 255, 255, 0.8);
-            position: relative;
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f0e7;
+            color: #173d2a;
         }
 
-        /* Nav container aligned to the left */
-        .nav-container {
+        .navbar {
+            padding: 25px 7%;
             display: flex;
-            justify-content: flex-start;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-
-        .nav-wrapper {
-            background: #ffe5ec;
-            padding: 10px 25px;
-            border-radius: 50px;
-            border: 2px dashed #ffb3c6;
-        }
-
-        nav a {
-            margin-right: 18px;
-            color: #ff4d6d;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
-
-        nav a:last-child {
-            margin-right: 0;
-        }
-
-        nav a:hover {
-            color: #c9184a;
-            transform: scale(1.1) rotate(-3deg);
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 34px;
-            margin-bottom: 30px;
-            color: #ff4d6d;
-            text-shadow: 2px 2px 0px #fff0f3, 4px 4px 0px #ffccd5;
-            letter-spacing: 0.5px;
-        }
-
-        .info {
-            padding: 14px 18px;
-            margin-bottom: 8px;
-            border-bottom: 2px dashed #ffe0e9;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            font-size: 16px;
-            border-radius: 12px;
-            transition: background 0.2s ease;
         }
 
-        .info:hover {
-            background: #fff0f3;
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #315440;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .nav-links .active {
+            color: #b65b35;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 55px auto;
+            padding: 0 25px 70px;
         }
 
         .label {
-            font-weight: 600;
-            display: inline-block;
-            width: 150px;
-            color: #ff4d6d;
-            flex-shrink: 0;
+            color: #b65b35;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: 58px;
+            font-weight: normal;
+            margin: 10px 0 35px;
+        }
+
+        .profile {
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            background: #173d2a;
+            color: white;
+        }
+
+        .intro {
+            background: #b65b35;
+            padding: 45px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .intro h2 {
+            font-family: Georgia, serif;
+            font-size: 45px;
+            font-weight: normal;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .intro p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .details {
+            padding: 40px;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            padding: 17px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .info:last-of-type {
+            border-bottom: none;
+        }
+
+        .label-info {
+            color: #d9c8a9;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .value {
+            font-size: 14px;
         }
 
         .message {
-            margin-top: 30px;
-            padding: 16px;
-            background: #ffe5ec;
-            border: 2px solid #ffccd5;
-            color: #c9184a;
-            font-weight: 600;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(255, 179, 198, 0.2);
+            margin-top: 25px;
+            padding: 14px;
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #e5cda8;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+            }
+
+            .intro {
+                min-height: 300px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+            h1 {
+                font-size: 45px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="profile-card">
+<nav class="navbar">
 
-    <div class="nav-container">
-        <nav>
-            <div class="nav-wrapper">
-                <a href="<?= site_url('student') ?>">Home</a>
-                <a href="<?= site_url('student/profile') ?>">Student Profile</a>
+
+    <div class="nav-links">
+        <a href="<?= site_url('student') ?>">Home</a>
+        <a href="<?= site_url('student/profile') ?>" class="active">Student Profile</a>
+        <a href="<?= site_url('users') ?>">Users</a>
+    </div>
+
+</nav>
+
+<main class="container">
+
+    <div class="label">Personal Information</div>
+
+    <h1>My Profile</h1>
+
+    <div class="profile">
+
+        <div class="intro">
+
+            <h2>
+                Hello,<br>
+                Althea.
+            </h2>
+
+
+        </div>
+
+        <div class="details">
+
+            <div class="info">
+                <div class="label-info">Student ID</div>
+                <div class="value"><?= $student_id ?></div>
             </div>
-        </nav>
+
+            <div class="info">
+                <div class="label-info">Name</div>
+                <div class="value"><?= $name ?></div>
+            </div>
+
+            <div class="info">
+                <div class="label-info">Course</div>
+                <div class="value"><?= $course ?></div>
+            </div>
+
+            <div class="info">
+                <div class="label-info">Year Level</div>
+                <div class="value"><?= $year ?></div>
+            </div>
+
+            <div class="info">
+                <div class="label-info">Section</div>
+                <div class="value"><?= $section ?></div>
+            </div>
+
+            <div class="info">
+                <div class="label-info">Email</div>
+                <div class="value"><?= $email ?></div>
+            </div>
+
+            <div class="info">
+                <div class="label-info">Interest</div>
+                <div class="value"><?= $hobby ?></div>
+            </div>
+
+            <div class="info">
+                <div class="label-info">About</div>
+                <div class="value"><?= $description ?></div>
+            </div>
+
+
+        </div>
+
     </div>
 
-    <h1>Student Profile</h1>
-
-    <div class="info">
-        <span class="label">Student ID:</span>
-        <?= $student_id ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Name:</span>
-        <?= $name ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Course:</span>
-        <?= $course ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Year Level:</span>
-        <?= $year ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Section:</span>
-        <?= $section ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Email:</span>
-        <?= $email ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Interest:</span>
-        <?= $hobby ?>
-    </div>
-
-    <div class="info">
-        <span class="label">About Me:</span>
-        <?= $description ?>
-    </div>
-
-    <div class="message">
-        Profile access verified — Welcome, Althea!
-    </div>
-
-</div>
+</main>
 
 </body>
 </html>

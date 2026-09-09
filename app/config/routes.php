@@ -52,3 +52,9 @@ $router->get('/student/profile', 'StudentController::profile')
        ->middleware('StudentMiddleware');
 
 $router->get('/users', 'UsersController::index');
+
+$router->match('/users/create', 'UsersController::create', ['GET', 'POST']);
+
+$router->match('/users/edit/{id}', 'UsersController::edit', ['GET', 'POST']);
+
+$router->get('/users/delete/{id}', 'UsersController::delete');

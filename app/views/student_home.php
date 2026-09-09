@@ -5,140 +5,198 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: 'Fredoka', 'Comic Sans MS', cursive, sans-serif;
-            background-color: #fff5f8;
-            background-image: 
-                radial-gradient(#ffccd5 2px, transparent 2px),
-                radial-gradient(#ffccd5 2px, #fff5f8 2px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            color: #5c4d5c;
-            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f0e7;
+            color: #173d2a;
+        }
+
+        .navbar {
+            padding: 25px 7%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
         }
 
-        .container {
-            max-width: 650px;
-            width: 85%;
-            margin: 40px auto;
-            padding: 45px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            border-radius: 35px;
-            text-align: center;
-            border: 4px solid #ffb3c6;
-            box-shadow: 
-                0 15px 35px rgba(255, 182, 193, 0.3),
-                inset 0 0 15px rgba(255, 255, 255, 0.8);
-            position: relative;
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
         }
 
-        .nav-container {
+        .nav-links {
             display: flex;
-            justify-content: flex-start;
-            margin-bottom: 30px;
-            width: 100%;
+            gap: 28px;
         }
 
-        .nav-wrapper {
-            background: #ffe5ec;
-            padding: 10px 25px;
-            border-radius: 50px;
-            border: 2px dashed #ffb3c6;
-        }
-
-        nav a {
-            margin-right: 18px;
-            color: #ff4d6d;
+        .nav-links a {
             text-decoration: none;
+            color: #315440;
+            font-size: 14px;
             font-weight: 600;
-            font-size: 16px;
-            transition: all 0.2s ease;
-            display: inline-block;
         }
 
-        nav a:last-child {
-            margin-right: 0;
+        .nav-links a:hover,
+        .nav-links .active {
+            color: #b65b35;
         }
 
-        nav a:hover {
-            color: #c9184a;
-            transform: scale(1.1) rotate(-3deg);
+        .hero {
+            min-height: 80vh;
+            padding: 70px 7%;
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .label {
+            color: #b65b35;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 34px;
-            margin-bottom: 12px;
-            color: #ff4d6d;
-            text-shadow: 2px 2px 0px #fff0f3, 4px 4px 0px #ffccd5;
-            letter-spacing: 0.5px;
-            text-align: center;
+            font-family: Georgia, serif;
+            font-size: 75px;
+            font-weight: normal;
+            line-height: 0.98;
+            letter-spacing: -4px;
+            margin: 0;
         }
 
-        p {
-            font-size: 17px;
-            color: #8d778d;
-            line-height: 1.6;
-            max-width: 480px;
-            margin: 0 auto 20px auto;
-            text-align: center;
+        h1 span {
+            color: #b65b35;
+            font-style: bold;
         }
 
-        .btn {
+        .description {
+            max-width: 500px;
+            margin-top: 28px;
+            color: #637268;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .button {
             display: inline-block;
-            margin-top: 15px;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #ff758f 0%, #ff4d6d 100%);
+            margin-top: 25px;
+            padding: 15px 24px;
+            background: #173d2a;
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            border-radius: 50px;
-            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.35);
-            border: 3px solid #ffffff;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 14px;
+            font-weight: bold;
         }
 
-        .btn:hover {
-            background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 12px 25px rgba(255, 77, 109, 0.45);
+        .button:hover {
+            background: #b65b35;
+        }
+
+        .visual {
+            height: 450px;
+            background: #173d2a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: #c87950;
+            border-radius: 50%;
+            top: 55px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .square {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #e5cda8;
+            right: 35px;
+            bottom: 35px;
+            transform: rotate(45deg);
+        }
+
+        .visual-text {
+            position: absolute;
+            left: 25px;
+            bottom: 25px;
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 24px;
+        }
+
+        @media (max-width: 800px) {
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 55px;
+            }
+
+            .visual {
+                height: 330px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<nav class="navbar">
 
-    <div class="nav-container">
-        <nav>
-            <div class="nav-wrapper">
-                <a href="<?= site_url('student') ?>">Home</a>
-                <a href="<?= site_url('student/profile') ?>">Student Profile</a>
-            </div>
-        </nav>
+
+    <div class="nav-links">
+        <a href="<?= site_url('student') ?>" class="active">Home</a>
+        <a href="<?= site_url('student/profile') ?>">Student Profile</a>
+        <a href="<?= site_url('users') ?>">Users</a>
     </div>
 
-    <h1>Student Information Page</h1>
+</nav>
 
-    <p>
-        A simple LavaLust application demonstrating
-        routing, controllers, views, and middleware.
-    </p>
+<main class="hero">
 
-    <a class="btn" href="<?= site_url('student/profile') ?>">
-        View My Profile
-    </a>
+    <div>
+        <div class="label">Student Information</div>
 
-</div>
+        <h1>
+            Welcome to your
+            <span>Student Portal.</span>
+        </h1>
+
+
+        <a class="button" href="<?= site_url('student/profile') ?>">
+            View My Profile
+        </a>
+    </div>
+
+    <div class="visual">
+        <div class="circle"></div>
+        <div class="square"></div>
+
+    </div>
+
+</main>
 
 </body>
 </html>
