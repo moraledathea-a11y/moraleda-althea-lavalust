@@ -49,12 +49,12 @@ $router->get('refresh', 'MigrationController::refresh');
 $router->get('status', 'MigrationController::status');
 
 // API Authentication Routes
-$router->post('/api/login', 'ApiAuthController::login');
-$router->post('/api/logout', 'ApiAuthController::logout');
-$router->post('/api/refresh', 'ApiAuthController::refresh');
+$router->match('/api/login', 'ApiAuthController::login', ['POST', 'OPTIONS']);
+$router->match('/api/logout', 'ApiAuthController::logout', ['POST', 'OPTIONS']);
+$router->match('/api/refresh', 'ApiAuthController::refresh', ['POST', 'OPTIONS']);
 
 // API Product Routes
-$router->get('/api/products', 'ApiProductController::index');
-$router->post('/api/products', 'ApiProductController::store');
-$router->put('/api/products/{id}', 'ApiProductController::update');
-$router->delete('/api/products/{id}', 'ApiProductController::delete');
+$router->match('/api/products', 'ApiProductController::index', ['GET', 'OPTIONS']);
+$router->match('/api/products', 'ApiProductController::store', ['POST', 'OPTIONS']);
+$router->match('/api/products/{id}', 'ApiProductController::update', ['PUT', 'OPTIONS']);
+$router->match('/api/products/{id}', 'ApiProductController::delete', ['DELETE', 'OPTIONS']);
