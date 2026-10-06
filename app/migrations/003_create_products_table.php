@@ -1,6 +1,6 @@
 <?php
 
-class Create_users_table {
+class Create_products_table {
 
     private $_lava;
     protected $dbforge;
@@ -19,22 +19,20 @@ class Create_users_table {
                 'constraint' => 11,
                 'auto_increment' => TRUE
             ],
-            'username' => [
-                'type' => 'VARCHAR',
-                'constraint' => 50
-            ],
-            'email' => [
+            'product_name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100
             ],
-            'password' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255
+            'description' => [
+                'type' => 'TEXT'
             ],
-            'role' => [
-                'type' => 'VARCHAR',
-                'constraint' => 20,
-                'default' => 'user'
+            'price' => [
+                'type' => 'DECIMAL',
+                'constraint' => '10,2'
+            ],
+            'quantity' => [
+                'type' => 'INT',
+                'constraint' => 11
             ],
             'created_at' => [
                 'type' => 'TIMESTAMP',
@@ -43,11 +41,11 @@ class Create_users_table {
         ]);
 
         $this->_lava->dbforge->add_key('id', TRUE);
-        $this->_lava->dbforge->create_table('users');
+        $this->_lava->dbforge->create_table('products');
     }
 
     public function down()
     {
-        $this->_lava->dbforge->drop_table('users');
+        $this->_lava->dbforge->drop_table('products');
     }
 }

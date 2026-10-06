@@ -39,3 +39,22 @@ $router->match('/products/edit/{id}', 'ProductController::edit', ['GET', 'POST']
 
 $router->get('/products/delete/{id}', 'ProductController::delete')
        ->middleware('AuthMiddleware');
+
+// Migration Routes
+$router->get('create-migration/{migration_class}', 'MigrationController::create_migration');
+$router->get('migrate', 'MigrationController::migrate');
+$router->get('rollback', 'MigrationController::rollback');
+$router->get('rollback-all', 'MigrationController::rollback-all');
+$router->get('refresh', 'MigrationController::refresh');
+$router->get('status', 'MigrationController::status');
+
+// API Authentication Routes
+$router->post('/api/login', 'ApiAuthController::login');
+$router->post('/api/logout', 'ApiAuthController::logout');
+$router->post('/api/refresh', 'ApiAuthController::refresh');
+
+// API Product Routes
+$router->get('/api/products', 'ApiProductController::index');
+$router->post('/api/products', 'ApiProductController::store');
+$router->put('/api/products/{id}', 'ApiProductController::update');
+$router->delete('/api/products/{id}', 'ApiProductController::delete');

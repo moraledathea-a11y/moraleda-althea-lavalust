@@ -3,6 +3,7 @@
 class Create_refresh_tokens_table {
 
     private $_lava;
+    protected $dbforge;
 
     public function __construct()
     {
@@ -12,39 +13,30 @@ class Create_refresh_tokens_table {
 
     public function up()
     {
-        if ($this->_lava->dbforge->table_exists('refresh_tokens')) {
-            return;
-        }
+        $this->_lava->dbforge->add_field([
+            'id' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'auto_increment' => TRUE
+            ],
+            'user_id' => [
+                'type' => 'INT',
+                'constraint' => 11
+            ],
+            'token' => [
+                'type' => 'TEXT'
+            ],
+            'expires_at' => [
+                'type' => 'DATETIME'
+            ],
+            'jti' => [
+                'type' => 'VARCHAR',
+                'constraint' => 64
+            ]
+        ]);
 
-        $this->_lava->dbforge
-            ->add_field([
-                'id' => [
-                    'type'           => 'INT',
-                    'unsigned'       => TRUE,
-                    'auto_increment' => TRUE,
-                    'null'           => FALSE,
-                ],
-                'user_id' => [
-                    'type'     => 'INT',
-                    'unsigned' => TRUE,
-                    'null'     => FALSE,
-                ],
-                'token' => [
-                    'type' => 'TEXT',
-                    'null' => FALSE,
-                ],
-                'expires_at' => [
-                    'type' => 'DATETIME',
-                    'null' => FALSE,
-                ],
-                'jti' => [
-                    'type' => 'TEXT',
-                    'null' => FALSE,
-                ],
-            ])
-            ->add_key('id', primary: TRUE)
-            ->add_key('user_id', name: 'user_id_idx')
-            ->create_table('refresh_tokens');
+        $this->_lava->dbforge->add_key('id', TRUE);
+        $this->_lava->dbforge->create_table('refresh_tokens');
     }
 
     public function down()

@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f6f3;
+  color: #26352d;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 380px;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.login-card h1 {
+  margin-bottom: 8px;
+}
+
+.login-card p {
+  color: #68736d;
+  margin-bottom: 25px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-card input {
+  padding: 13px;
+  border: 1px solid #d5ddd8;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.login-card button,
+.dashboard-card button {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #3d7a59;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-card button:hover,
+.dashboard-card button:hover {
+  background: #326448;
+}
+
+.demo-account {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f3f7f4;
+  border-radius: 8px;
+  color: #59645d;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-card {
+  background: white;
+  padding: 45px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card h1 {
+  margin-bottom: 25px;
+}
+
+.dashboard-card h2 {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,28 @@
+Date: 05/10/2026 19:38:49
+Exception Class: Error
+Error Message: Call to undefined function handle_cors()
+Filename: C:\xampp\htdocs\lavalust\scheme\libraries\Api.php
+Line Number: 207
+------------------------------------------------------------------
+
+Date: 05/10/2026 19:40:20
+Exception Class: Error
+Error Message: Call to undefined function handle_cors()
+Filename: C:\xampp\htdocs\lavalust\scheme\libraries\Api.php
+Line Number: 207
+------------------------------------------------------------------
+
+Date: 05/10/2026 19:42:25
+Exception Class: Error
+Error Message: Call to undefined function handle_cors()
+Filename: C:\xampp\htdocs\lavalust\scheme\libraries\Api.php
+Line Number: 207
+------------------------------------------------------------------
+
+Date: 05/10/2026 19:44:11
+Exception Class: Error
+Error Message: Call to undefined function handle_cors()
+Filename: C:\xampp\htdocs\lavalust\scheme\libraries\Api.php
+Line Number: 207
+------------------------------------------------------------------
+

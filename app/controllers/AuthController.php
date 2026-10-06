@@ -1,45 +1,61 @@
 <?php
+
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-class AuthController extends Controller
+class ApiAuthController extends Controller
 {
+    private $api;
+
     public function __construct()
     {
         parent::__construct();
 
-        $this->call->library('session');
+        $this->call->library('Api');
+        $this->api = $this->Api;
     }
 
     public function login()
     {
-        if ($this->io->method() == 'post') {
+        $this->api->require_method('POST');
 
-            $username = $this->io->post('username');
-            $password = $this->io->post('password');
+        $data = $this->api->body();
 
-            if ($username === 'admin' && $password === 'admin123') {
+        $username = $data['username'] ?? '';
+        $password = $data['password'] ?? '';
 
-                $_SESSION['logged_in'] = true;
-                $_SESSION['username'] = $username;
+        if ($username === 'admin' && $password === 'admin123') {
 
-                redirect('products');
-                exit;
-            }
+            $tokens = $this->api->issue_tokens([
+                'id' => 1,
+                'role' => 'admin'
+            ]);
 
-            $data['error'] = 'Invalid username or password.';
-
-            $this->call->view('login', $data);
-            return;
+            $this->api->respond([
+                'message' => 'Login successful.',
+                'token' => $tokens['access_token'],
+                'access_token' => $tokens['access_token'],
+                'refresh_token' => $tokens['refresh_token']
+            ]);
         }
 
-        $this->call->view('login');
+        $this->api->respond_error(
+            'Invalid username or password.',
+            401
+        );
     }
 
     public function logout()
     {
-        session_destroy();
+        $this->api->require_method('POST');
 
-        redirect('login');
-        exit;
+        $data = $this->api->body();
+
+        $this->api->revoke_refresh_token(
+            $data['refresh_token'] ?? ''
+        );
+
+        $this->api->respond([
+            'message' => 'Logged out successfully.'
+        ]);
     }
 }
